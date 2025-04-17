@@ -40,6 +40,7 @@ public class AppRunner {
 
         UniversalArray<Product> allowProducts = new UniversalArrayImpl<>();
         allowProducts.addAll(getAllowedProducts().toArray());
+        print("Выберите действие: ");
         chooseAction(allowProducts);
 
     }
@@ -51,6 +52,7 @@ public class AppRunner {
                 allowProducts.add(products.get(i));
             }
         }
+
         return allowProducts;
     }
 
@@ -58,6 +60,7 @@ public class AppRunner {
         print(" a - Пополнить баланс");
         showActions(products);
         print(" h - Выйти");
+        print("Введите букву для выбора товара: ");
         String action = fromConsole().substring(0, 1);
         if ("a".equalsIgnoreCase(action)) {
             coinAcceptor.setAmount(coinAcceptor.getAmount() + 10);
@@ -76,7 +79,7 @@ public class AppRunner {
             if ("h".equalsIgnoreCase(action)) {
                 isExit = true;
             } else {
-                print("Недопустимая буква. Попрбуйте еще раз.");
+                print("Недопустимая буква. Попробуйте еще раз.");
                 chooseAction(products);
             }
         }

@@ -16,6 +16,6 @@ public class CoinAcceptor implements MoneyAcceptor {
     }
     @Override
     public String getName() {
-        return "Монет";
+        return "Монеты";
     }
 }

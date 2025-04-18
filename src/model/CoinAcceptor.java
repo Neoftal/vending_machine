@@ -1,6 +1,6 @@
 package model;
 
-public class CoinAcceptor {
+public class CoinAcceptor implements MoneyAcceptor {
     private int amount;
 
     public CoinAcceptor(int amount) {
@@ -13,5 +13,9 @@ public class CoinAcceptor {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+    @Override
+    public String getName() {
+        return "Монет";
     }
 }

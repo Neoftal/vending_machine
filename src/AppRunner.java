@@ -26,15 +26,34 @@ public class AppRunner {
     }
 
     public static void run() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Выберите тип оплаты:");
-        System.out.println("1 - Монеты");
-        System.out.println("2 - Купюры");
-        String choice = scanner.nextLine();
+        MoneyAcceptor acceptor = null;
+        while (acceptor == null) {
+            try {
+                System.out.println("Выберите тип оплаты:");
+                System.out.println("1 - Монеты");
+                System.out.println("2 - Купюры");
+                System.out.print("Ваш выбор: ");
+                String choice = new Scanner(System.in).nextLine().trim();
 
-        MoneyAcceptor acceptor = "2".equals(choice)
-                ? new BanknoteAcceptor(100)
-                : new CoinAcceptor(100);
+                if (choice.isEmpty()) {
+                    System.out.println("Ошибка: Ввод не должен быть пустым.");
+                    continue;
+                }
+
+                switch (choice) {
+                    case "1":
+                        acceptor = new CoinAcceptor(100);
+                        break;
+                    case "2":
+                        acceptor = new BanknoteAcceptor(100);
+                        break;
+                    default:
+                        System.out.println("Ошибка: Введите только 1 или 2.");
+                }
+            } catch (Exception e) {
+                System.out.println("Произошла ошибка ввода. Попробуйте снова.");
+            }
+        }
 
         AppRunner app = new AppRunner(acceptor);
 

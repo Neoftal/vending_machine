@@ -76,9 +76,10 @@ public class AppRunner {
 
         if ("a".equalsIgnoreCase(action)) {
             moneyAcceptor.setAmount(moneyAcceptor.getAmount() + 10);
-            print("Вы пополнили баланс на 10" );
+            print("Вы пополнили баланс на 10 через " + moneyAcceptor.getName());
             return;
         }
+
 
         if ("h".equalsIgnoreCase(action)) {
             isExit = true;

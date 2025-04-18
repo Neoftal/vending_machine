@@ -20,6 +20,6 @@ public class BanknoteAcceptor implements MoneyAcceptor {
 
     @Override
     public String getName() {
-        return "Купюры";
+        return "Купюр";
     }
 }
